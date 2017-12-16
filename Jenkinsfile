@@ -26,5 +26,36 @@ pipeline {
 
         }
 
+        stage('Deploy to production') {
+
+            steps {
+
+                timeout(time:5, unit:'DAYS'){
+
+                    input message:'Approve Production Deployment?'
+
+                }
+                
+                build job: 'deploy-to-production'
+
+            }
+            post {
+
+                success {
+
+                    echo 'Code deployed to prod'
+
+                }
+
+                failure {
+
+                    echo 'Deployment Failed'
+
+                }
+
+            }
+
+        }        
+
     }
 }
