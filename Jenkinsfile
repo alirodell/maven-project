@@ -14,5 +14,17 @@ pipeline {
             }
         }
 
+        stage('Deploy to staging') {
+
+            steps {
+
+                /* One nice thing about calling a job from the pipeline is that we can change the target for the jobs per environment and then use the same Jenkins file for each. */
+                
+                build job: 'deploy-to-staging'
+
+            }
+
+        }
+
     }
 }
