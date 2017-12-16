@@ -36,7 +36,7 @@ pipeline {
 
                 }
                 
-                build job: 'deploy-to-production'
+                build job: 'deploy-to-prod'
 
             }
             post {
